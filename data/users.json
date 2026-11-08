@@ -1,0 +1,44 @@
+[
+  {
+    "username": "admin",
+    "name": "Admin",
+    "role": "admin",
+    "passwordHash": "c93d4bf05bfbf62e49fb02950a0df767:fcb940eb10f1326a8d1f547c91330fc6e2a26b485d402d0921b412acf98e2222"
+  },
+  {
+    "username": "pavan",
+    "name": "Pavan",
+    "role": "member",
+    "passwordHash": "8327d860ace71157a3a5a9839b3e53b5:c1066d90cbd21e34de20129940ba67e0ba0d40f783b4df8393ee6fa66942c185"
+  },
+  {
+    "username": "harish",
+    "name": "Harish",
+    "role": "member",
+    "passwordHash": "1276f9ccda7c9b0d84f5b5d7a840b775:68a19bc32b368343f2e7bf0d6abcfe8c625bd12bee356efe591b857db6ee5384"
+  },
+  {
+    "username": "anirudh",
+    "name": "Anirudh",
+    "role": "member",
+    "passwordHash": "848f35e3c065e8c750038ac93e08564c:876ae24a848addfc98b2d2d90b14b570511edacc6aaa2711b7dea4a9872a9c2c"
+  },
+  {
+    "username": "varun",
+    "name": "Varun",
+    "role": "member",
+    "passwordHash": "11e4d8f3988e4e0a8eb68d2e7d23a5b4:1c9eca287f7976425d0cb829de538ee4e2f20a08e1edd4634e7a605e9d4f3491"
+  },
+  {
+    "username": "samarth",
+    "name": "Samarth",
+    "role": "member",
+    "passwordHash": "2ce06099957c0b1dba9e516629823c2b:68147a82fe29ffbe87a4579470350aec845d0fc0813ed0a861b62b35fa1faf13"
+  },
+  {
+    "username": "narendra",
+    "name": "Narendra",
+    "role": "member",
+    "passwordHash": "b2fdb495825f18139731b006ea84805e:fb83e3697f39f9316d36af20c90280a5ecd4515d93548725293ff312f8c5571d"
+  }
+]
