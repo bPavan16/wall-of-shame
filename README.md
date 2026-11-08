@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wall of Shame
 
-## Getting Started
+A mobile-first wall of the dumbest things your group has said. Anyone can read and upvote; logging in is needed to add or delete quotes.
 
-First, run the development server:
+## Run locally
+
+Works on Node 22+.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Locally, quotes and users are read from and written to `data/quotes.json` and `data/users.json`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Accounts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Seeded in `data/users.json` (passwords are stored as scrypt hashes).
 
-## Learn More
+| Username | Password |
+| --- | --- |
+| `pavan`, `harish`, `anirudh`, `varun`, `samarth`, `narendra` | `shame123` |
+| `admin` | `admin123` |
 
-To learn more about Next.js, take a look at the following resources:
+Rename the members by editing `username` / `name` in `data/users.json` **before the first deploy**. To change a default password, generate a hash with `hashPassword` from `lib/password.ts` and paste it into the `passwordHash` field.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Members can delete their own quotes. The admin can delete any quote.
+- Everyone can change their password from the profile menu (requires the current password).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy to Vercel
 
-## Deploy on Vercel
+Vercel's filesystem is read-only, so writes are stored in a private **Vercel Blob** store as the same JSON files (seeded from `data/` on first use).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push to GitHub and import the repo in Vercel.
+2. Project > Storage > create a **Blob** store and connect it. This sets `BLOB_READ_WRITE_TOKEN`.
+3. Add the env var `SESSION_SECRET` (any long random string, e.g. `openssl rand -hex 32`).
+4. Deploy.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Without the Blob store the app still runs, but writes go to `/tmp` and are lost on cold starts.
+
+## Data shape
+
+`quotes.json`: `{ id, quote, by, createdBy, createdAt, upvotes }`
+# wall-of-shame
